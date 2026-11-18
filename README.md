@@ -1,25 +1,52 @@
-# METATRADER5 — Trading Operating System (TOS)
+# METATRADER5
 
-Plataforma proprietária de inteligência, decisão, gestão de risco, execução e auditoria sobre MetaTrader 5.
+Plataforma proprietária de inteligência, pesquisa quantitativa, decisão, gestão de risco e execução sobre MetaTrader 5.
 
-## Estado atual
-- TOS Kernel V0.1.0: Expert Advisor observacional, sem envio de ordens.
-- Trading ao vivo desabilitado; nenhuma execução automática implementada.
-- Compilação no MetaEditor, Strategy Tester e homologação ainda pendentes.
+## Estrutura oficial
 
-## Princípios
-1. Separar análise, decisão, risco e execução.
-2. Somente Execution Engine poderá futuramente enviar ordens.
-3. Risk Engine possui veto absoluto.
-4. Dados ausentes, atrasados ou contraditórios implicam NO_TRADE.
-5. Decisões auditáveis, reproduzíveis e versionadas.
-6. Nenhuma rentabilidade é garantida.
+```text
+METATRADER5/
+├── README.md
+├── LICENSE
+├── GOVERNANCA/
+├── docs/
+│   ├── ARCHITECTURE.md
+│   ├── ROADMAP.md
+│   └── TECHNICAL_STANDARDS.md
+├── MQL5/
+│   ├── Experts/
+│   ├── Indicators/
+│   ├── Include/
+│   └── Scripts/
+├── PYTHON/
+│   ├── data/
+│   ├── research/
+│   ├── backtesting/
+│   └── execution/
+├── STRATEGIES/
+├── TESTS/
+├── DATA/
+└── INFRASTRUCTURE/
+```
 
-## Documentação
-- [Arquitetura](docs/ARCHITECTURE.md)
-- [Roadmap](docs/ROADMAP.md)
-- [Padrões técnicos](docs/TECHNICAL_STANDARDS.md)
-- [Guia V0.1](docs/GUIA_TOS_METATRADER5_V0.1.md)
-- Kernel: MQL5/Experts/TOS/TOS_KERNEL.mq5
+## Componentes atuais
+- `MQL5/Experts/TOS/TOS_KERNEL.mq5`: kernel observacional inicial do Trading Operating System (TOS).
+- `docs/ARCHITECTURE.md`: arquitetura modular.
+- `docs/ROADMAP.md`: fases de desenvolvimento.
+- `docs/TECHNICAL_STANDARDS.md`: padrões técnicos e de segurança.
+- `docs/GUIA_TOS_METATRADER5_V0.1.md`: guia do primeiro kernel.
 
-O TOS é uma plataforma de negociação sobre MT5, não um sistema operacional de computador. O projeto é independente do BrickMaster; não alterar seu escopo sem decisão formal.
+## Princípios obrigatórios
+1. Separar ingestão de dados, análise, decisão, risco, execução e auditoria.
+2. Somente o módulo de execução poderá enviar ordens.
+3. O motor de risco possui veto absoluto.
+4. Dados ausentes, atrasados ou contraditórios devem bloquear novas entradas.
+5. Toda alteração deve ser documentada e versionada no GitHub.
+6. Nenhum código será considerado homologado sem compilação e testes reproduzíveis.
+7. Não presumir nem prometer rentabilidade.
+
+## Estado
+Projeto em estruturação. O kernel inicial é observacional e não envia ordens. A compilação no MetaEditor, os testes no Strategy Tester e a homologação permanecem pendentes.
+
+## Independência do BrickMaster
+O METATRADER5/TOS é um projeto independente. Não alterar nem incorporar componentes do BrickMaster sem decisão formal e documentação específica.
